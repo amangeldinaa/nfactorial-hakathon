@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Titillium+Web:wght@400;700&display=swap');
+
+* {
+  font-family: 'Open Sans', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.main-container {
+  background-color: rgb(101, 249, 249);
+  width: 100vw;
+  height: 100vh;
+  color: rgb(6, 6, 156);
+  /* position: relative; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.row {
+  width: 100vw;
+  height: 15vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.row-main {
+  width: 100vw;
+  height: 65vh;
+}
+
+.col {
+  width: 33%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.col-1 {
+  width: 33%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.col-2 {
+  width: 33%;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.row-w-btns {
+  width: 100vw;
+  height: 20vh;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+.coin {
+  width: 6vw;
+  height: 10vh;
+  background-color: transparent;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* .btn {
+  border: solid 1px black;
+  border-radius: 50px;
+} */
