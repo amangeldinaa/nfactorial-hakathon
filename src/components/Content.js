@@ -1,4 +1,4 @@
-import '../App.css';
+import './shashu/content.css';
 import oyu from "../img/oyu.png";
 import oyusec from "../img/oyu2.png";
 import five from "../img/5tenge.png";
@@ -6,11 +6,15 @@ import ten from "../img/10tenge.png";
 import twenty from "../img/20tenge.png";
 import fifty from "../img/50tenge.png";
 import hundred from "../img/100tenge.png";
+import music from "../img/music.mp3";
+import coinsound from "../img/coin.mp3";
 
 import * as React from 'react';
 import { useState } from 'react';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
+import ReactAudioPlayer from 'react-audio-player';
+import Box from '@mui/material/Box';
 
 const cashTitles = [
   { 
@@ -37,18 +41,33 @@ const cashTitles = [
 ]
 
 function Content() {
+  const audio = new Audio(coinsound);
 
   const [showCoins, setShowCoins] = useState(false);
   const [coinArray, setCoinArray] = useState([]);
+  const [showButton, setShowButton] = useState(true);
+  const [show, setShow] = useState(false);
 
   const handleTwoHundred = ({id, sum}) => {
     console.log(id, sum)
     setCoinArray(sum)
     setShowCoins(true)
+    
+  }
+
+  const handleCoinBtn = () => {
+    console.log("pressed");
+    setShowButton(false);
+    // setIsShown(current => !current);
   }
 
   return (
     <div className="main-container">
+      <ReactAudioPlayer
+        src={music}
+        autoPlay
+      />
+
       <div className="row">
         <div className="col-1"><img src={oyu} alt="oyu" style={{width:'37%', height:'100%'}}/></div>
         <div className="col"><h1>Шашу</h1></div>
@@ -57,25 +76,27 @@ function Content() {
 
       <div className="row-main">
         {coinArray.map((coins)=>(
-          <Button className='btn'>
-            <img src={coins} alt="" className="coin" style={showCoins ? {display: 'inline'}: {display: 'none'}  }/>
-          </Button>
+          // <Button className='btn' onClick={()=>{handleCoinBtn()}} style={showButton ? {display: 'inline'}: {display: 'none'}}>
+          //   <img src={coins} alt="" className="coin" style={showCoins ? {display: 'inline'}: {display: 'none'}  }/>
+          // </Button>
+
+             <Button className='btn'>
+                <img src={coins} alt="" className="coin" style={showCoins ? {display: 'inline'}: {display: 'none'}  }/>
+             </Button>
+          
         ))}
-        
       </div>
 
       <div className="row-w-btns">
         <Stack spacing={2} direction="row">
         {cashTitles.map((money)=>(
-          <Button variant="contained" key={money.id} onClick={()=>handleTwoHundred(money)}>{money.title}</Button>
+          <Button variant="contained" key={money.id} onClick={()=>{handleTwoHundred(money); audio.play();}}>{money.title}</Button>
         ))}
-          
-          
         </Stack>
       </div>
-
     </div>
   );
 }
+
 
 export default Content;
